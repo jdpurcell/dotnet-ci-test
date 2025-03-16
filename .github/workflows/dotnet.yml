@@ -19,4 +19,4 @@ jobs:
         DOTNET_CLI_WORKLOAD_UPDATE_NOTIFY_DISABLE: true
       shell: pwsh
       run: |
-        dotnet run
+        dotnet Prebuilt/HelloWorld.dll

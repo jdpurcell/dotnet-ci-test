@@ -1,10 +1,11 @@
-name: C# Console Application
+name: Run
 on:
   push:
   pull_request:
   workflow_dispatch:
 jobs:
-  build-and-run:
+  run:
+    name: Run
     runs-on: ubuntu-latest
     steps:
     - name: Checkout code
@@ -18,7 +19,4 @@ jobs:
         DOTNET_CLI_WORKLOAD_UPDATE_NOTIFY_DISABLE: true
       shell: pwsh
       run: |
-        dotnet new console -o tempApp
-        Move-Item -Path HelloWorld.cs -Destination tempApp/Program.cs -Force
-        Set-Location tempApp
         dotnet run

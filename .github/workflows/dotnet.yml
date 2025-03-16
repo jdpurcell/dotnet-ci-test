@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
 jobs:
   build-and-run:
-    runs-on: macos-14
+    runs-on: windows-2022
     steps:
     - name: Checkout code
       uses: actions/checkout@v4

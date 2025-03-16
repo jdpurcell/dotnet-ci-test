@@ -6,7 +6,14 @@ on:
 jobs:
   run:
     name: Run
-    runs-on: windows-2022
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - runner: 'windows-latest'
+          - runner: 'ubuntu-latest'
+          - runner: 'macos-latest'
+    runs-on: ${{ matrix.runner }}
     steps:
     - name: Checkout code
       uses: actions/checkout@v4

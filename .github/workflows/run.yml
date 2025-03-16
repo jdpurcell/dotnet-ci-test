@@ -13,14 +13,8 @@ jobs:
           - runner: 'macos-latest'
     runs-on: ${{ matrix.runner }}
     steps:
-    - name: Checkout
-      uses: actions/checkout@v4
     - name: Run
-      env:
-        DOTNET_NOLOGO: true
-        DOTNET_CLI_TELEMETRY_OPTOUT: true
-        DOTNET_ADD_GLOBAL_TOOLS_TO_PATH: false
-        DOTNET_GENERATE_ASPNET_CERTIFICATE: false
-        DOTNET_CLI_WORKLOAD_UPDATE_NOTIFY_DISABLE: true
       run: |
-        dotnet Prebuilt/HelloWorld.dll
+        curl -sLO https://github.com/jdpurcell/dotnet-ci-test/releases/download/latest/HelloWorld.zip
+        unzip -q HelloWorld.zip -d HelloWorld
+        dotnet HelloWorld/HelloWorld.dll

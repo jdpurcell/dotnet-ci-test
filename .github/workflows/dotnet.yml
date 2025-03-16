@@ -10,8 +10,9 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
     - name: Build and Run
+      shell: pwsh
       run: |
         dotnet new console -o tempApp
-        mv HelloWorld.cs tempApp/Program.cs
-        cd tempApp
+        Move-Item -Path HelloWorld.cs -Destination tempApp/Program.cs -Force
+        Set-Location tempApp
         dotnet run
